@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080914">
   <meta name="description" content="Sites Premium: criamos experiências digitais sofisticadas para marcas que querem se destacar.">
+
   <title>Sites Premium | Sua marca em outro nível</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,19 +48,34 @@
       animation: appear 1s ease both;
     }
 
+    /* NOVA LOGO */
     .logo {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 22px;
-      border: 1px solid rgba(216, 182, 106, .6);
-      border-radius: 22px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(145deg, rgba(118,82,217,.3), rgba(36,107,206,.15));
-      box-shadow: 0 0 45px rgba(118,82,217,.18);
-      color: var(--gold);
-      font-size: 30px;
-      font-weight: 700;
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow:
+        0 0 35px rgba(118, 82, 217, .22),
+        0 0 55px rgba(216, 182, 106, .08);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 45px rgba(118, 82, 217, .35),
+        0 0 65px rgba(216, 182, 106, .13);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .brand {
@@ -103,62 +119,89 @@
       font-weight: 300;
     }
 
+    /* BOTÕES PRINCIPAIS */
     .buttons {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      max-width: 390px;
+      gap: 16px;
+      max-width: 410px;
       margin: 0 auto;
     }
 
     .button {
-      display: block;
-      padding: 17px 22px;
-      border-radius: 12px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 17px 24px;
+      border-radius: 14px;
       text-decoration: none;
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: 1.2px;
-      transition: transform .25s, box-shadow .25s, border-color .25s;
+      letter-spacing: 1.1px;
+      overflow: hidden;
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+    }
+
+    .button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255,255,255,.22),
+        transparent
+      );
+      transition: left .6s ease;
+    }
+
+    .button:hover::before {
+      left: 100%;
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
     }
 
     .primary {
       color: #11101a;
-      background: linear-gradient(100deg, #e3c47d, #c49b4d);
-      box-shadow: 0 8px 30px rgba(196,155,77,.15);
+      background: linear-gradient(110deg, #f0d99c, #d8b66a, #bd9141);
+      border: 1px solid rgba(255, 225, 158, .65);
+      box-shadow: 0 8px 30px rgba(196,155,77,.17);
+    }
+
+    .primary:hover {
+      box-shadow: 0 14px 38px rgba(196,155,77,.3);
     }
 
     .secondary {
-      color: #eeeafc;
-      border: 1px solid rgba(145,125,205,.4);
-      background: rgba(255,255,255,.035);
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(118,82,217,.2);
+      color: #f0eaff;
+      border: 1px solid rgba(145,125,205,.55);
+      background: linear-gradient(
+        110deg,
+        rgba(118,82,217,.16),
+        rgba(36,107,206,.12)
+      );
+      box-shadow: 0 8px 28px rgba(76,29,149,.1);
     }
 
     .secondary:hover {
       border-color: var(--gold);
-    }
-
-    .social {
-      margin-top: 34px;
-      display: flex;
-      justify-content: center;
-      gap: 26px;
-    }
-
-    .social a {
-      color: #aaa6c4;
-      text-decoration: none;
-      font-size: 13px;
-      transition: color .2s;
-    }
-
-    .social a:hover {
-      color: var(--gold);
+      background: linear-gradient(
+        110deg,
+        rgba(118,82,217,.28),
+        rgba(36,107,206,.2)
+      );
+      box-shadow: 0 12px 35px rgba(118,82,217,.23);
     }
 
     footer {
@@ -169,8 +212,38 @@
     }
 
     @keyframes appear {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 30px 18px;
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .brand {
+        margin-bottom: 30px;
+      }
+
+      .description {
+        font-size: 15px;
+      }
+
+      .button {
+        font-size: 12px;
+        letter-spacing: .8px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -184,13 +257,19 @@
 
 <body>
   <main class="container">
-    <div class="logo">S</div>
+
+    <div class="logo">
+      <img src="logo.svg" alt="Logo oficial Sites Premium">
+    </div>
 
     <div class="brand">Sites Premium</div>
 
     <p class="eyebrow">Design • Tecnologia • Presença digital</p>
 
-    <h1>Sua marca merece<br><span>uma presença extraordinária.</span></h1>
+    <h1>
+      Sua marca merece<br>
+      <span>uma presença extraordinária.</span>
+    </h1>
 
     <p class="description">
       Criamos sites modernos, sofisticados e estratégicos para transformar
@@ -198,27 +277,27 @@
     </p>
 
     <div class="buttons">
+
       <a class="button primary"
          href="https://t.me/sitespremiumsdesign"
-         target="_blank" rel="noopener noreferrer">
+         target="_blank"
+         rel="noopener noreferrer">
         CONVERSAR SOBRE MEU PROJETO
       </a>
 
       <a class="button secondary"
          href="https://www.instagram.com/sitespremiumsdesign/"
-         target="_blank" rel="noopener noreferrer">
+         target="_blank"
+         rel="noopener noreferrer">
         CONHECER NOSSO INSTAGRAM
       </a>
+
     </div>
 
-    <div class="social">
-      <a href="https://www.instagram.com/sitespremiumsdesign/"
-         target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://t.me/sitespremiumsdesign"
-         target="_blank" rel="noopener noreferrer">Telegram</a>
-    </div>
+    <footer>
+      © SITES PREMIUM — TODOS OS DIREITOS RESERVADOS
+    </footer>
 
-    <footer>© SITES PREMIUM — TODOS OS DIREITOS RESERVADOS</footer>
   </main>
 </body>
 </html>
